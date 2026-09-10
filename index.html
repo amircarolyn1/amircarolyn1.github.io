@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carolyn M. Amir, PhD — Translational Neuroscientist</title>
+<meta name="description" content="Carolyn Amir is a translational neuroscientist and NIH T32 Postdoctoral Fellow at Harvard Medical School and Boston Children's Hospital, using machine learning and neuroimaging to predict psychiatric and substance use outcomes across development.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1E2761;
+    --navy-deep: #161D4C;
+    --ice: #CADCFC;
+    --ink: #23263A;
+    --muted: #5C6274;
+    --line: #E3E7F2;
+    --bg: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--ice); transition: border-color 0.15s; }
+  a:hover { border-bottom-color: var(--navy); }
+  a:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; border-radius: 2px; }
+
+  /* ---- Sidebar ---- */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: 320px;
+    background: var(--navy);
+    color: #fff;
+    padding: 2.5rem 2.25rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .sidebar img.photo {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+    border: 3px solid var(--ice);
+  }
+  .sidebar h1 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 1.25rem;
+  }
+  .sidebar .role {
+    color: var(--ice);
+    font-size: 0.93rem;
+    margin-top: 0.6rem;
+    line-height: 1.5;
+  }
+  .sidebar nav { margin-top: 1.75rem; }
+  .sidebar nav a {
+    display: block;
+    color: #fff;
+    border: none;
+    padding: 0.26rem 0;
+    font-size: 0.93rem;
+  }
+  .sidebar nav a:hover { color: var(--ice); }
+  .sidebar .links { margin-top: auto; padding-top: 1.75rem; font-size: 0.86rem; }
+  .sidebar .links a { display: block; color: var(--ice); border: none; padding: 0.18rem 0; }
+  .sidebar .links a:hover { color: #fff; }
+
+  /* ---- Main ---- */
+  main {
+    margin-left: 320px;
+    padding: 4rem 4rem 5rem;
+    max-width: 880px;
+  }
+  section + section { margin-top: 3.75rem; }
+  h2 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 1.25rem;
+  }
+  h3 {
+    font-size: 1.02rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  p { max-width: 70ch; }
+  p + p { margin-top: 0.9rem; }
+  .lede {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 1.25rem;
+    line-height: 1.55;
+    max-width: 60ch;
+  }
+  .thread { margin-bottom: 1.5rem; }
+  .thread p, .entry p { color: var(--muted); font-size: 0.95rem; }
+
+  /* Timeline entries */
+  .entry { margin-bottom: 1.4rem; max-width: 76ch; }
+  .entry .when { font-size: 0.85rem; color: var(--muted); }
+
+  /* Publications */
+  .pubyear { margin-bottom: 1.75rem; }
+  .pubyear h3 {
+    font-family: "Source Serif 4", Georgia, serif;
+    color: var(--navy);
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.75rem;
+  }
+  .pub {
+    padding-left: 1.4rem;
+    text-indent: -1.4rem;
+    margin-bottom: 0.7rem;
+    font-size: 0.94rem;
+    color: var(--muted);
+    max-width: 76ch;
+  }
+  .pub strong { color: var(--ink); font-weight: 600; }
+  .pub em { color: var(--ink); font-style: italic; }
+  .pub a { font-size: 0.88rem; white-space: nowrap; }
+  .note { font-size: 0.88rem; color: var(--muted); max-width: 70ch; }
+
+  .talk { margin-bottom: 0.6rem; font-size: 0.93rem; color: var(--muted); max-width: 76ch; padding-left: 1.4rem; text-indent: -1.4rem; }
+  .talk strong { color: var(--ink); font-weight: 600; }
+
+  /* Two-column funding/honors */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .cols h3 {
+    font-family: "Source Serif 4", Georgia, serif;
+    color: var(--navy);
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.75rem;
+  }
+  .award { margin-bottom: 0.65rem; font-size: 0.92rem; color: var(--muted); }
+  .award strong { color: var(--ink); font-weight: 600; }
+  .award .when { font-size: 0.83rem; }
+
+  ul.plain { list-style: none; }
+  ul.plain li { margin-bottom: 1rem; max-width: 74ch; }
+  ul.plain li p { color: var(--muted); font-size: 0.95rem; }
+
+  .cvrow { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .btn {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    border: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  .btn:hover { background: var(--navy-deep); border: none; }
+  .cvembed {
+    width: 100%;
+    height: 640px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+
+  footer {
+    margin-left: 320px;
+    padding: 2rem 4rem 3rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--line);
+    max-width: 880px;
+  }
+
+  /* ---- Mobile ---- */
+  @media (max-width: 900px) {
+    .sidebar {
+      position: static;
+      width: 100%;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      align-items: center;
+    }
+    .sidebar nav { display: none; }
+    .sidebar .links { margin-top: 1.5rem; padding-top: 0; }
+    main, footer { margin-left: 0; padding: 2.5rem 1.5rem; }
+    .cols { grid-template-columns: 1fr; gap: 1.5rem; }
+    .cvembed { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <img class="photo" src="headshot.jpg" alt="Portrait of Carolyn Amir">
+  <h1>Carolyn M. Amir, PhD</h1>
+  <p class="role">Translational Neuroscientist<br>
+  NIH T32 Postdoctoral Fellow<br>
+  Harvard Medical School |<br>Boston Children's Hospital</p>
+  <nav aria-label="Sections">
+    <a href="#research">Research</a>
+    <a href="#experience">Experience</a>
+    <a href="#publications">Publications</a>
+    <a href="#talks">Talks</a>
+    <a href="#funding">Funding &amp; honors</a>
+    <a href="#teaching">Teaching &amp; mentorship</a>
+    <a href="#service">Service &amp; leadership</a>
+    <a href="#beyond">Writing &amp; outreach</a>
+    <a href="#cv">CV &amp; contact</a>
+  </nav>
+  <div class="links">
+    <a href="mailto:carolyn.amir@childrens.harvard.edu">carolyn.amir@childrens.harvard.edu</a>
+    <a href="https://scholar.google.com/citations?user=zGjCoV8AAAAJ">Google Scholar</a>
+    <a href="https://orcid.org/0000-0001-9078-8564">ORCID</a>
+    <a href="https://github.com/amircarolyn1">GitHub</a>
+    <a href="https://www.linkedin.com/in/carolyn-amir-818b06101/">LinkedIn</a>
+  </div>
+</aside>
+
+<main>
+  <section id="about">
+    <p class="lede">I study how early-life drug exposure shapes the developing brain, using machine learning and neuroimaging to predict psychiatric and substance use outcomes before illness takes hold.</p>
+    <p style="margin-top:1.25rem;">I am a Kirschstein-NRSA T32 Postdoctoral Fellow at Harvard Medical School and Boston Children's Hospital. I completed my PhD in Neuroscience at UCLA with Dr. Carrie Bearden, supported by an NIH F31 fellowship, where my dissertation — <em>From Synapse to Syndrome: Substance Use, Psychosis, and the Neural Architecture of Risk</em> — integrated neuroimaging, clinical, and computational approaches to predict substance use and psychosis outcomes in over 11,000 adolescents from the ABCD Study. Before that, I was a postbaccalaureate research fellow at the NIH studying the neural correlates of pain and expectation, and an undergraduate researcher at Boston University working on EEG and brain stimulation.</p>
+    <p>My current work characterizes female-specific windows of cannabis-related neurodevelopmental risk, from prenatal exposure effects on infant brain development (HBCD Study) to pubertal hormone–cannabis interactions shaping psychiatric risk in girls.</p>
+    <p>Outside the lab, I hold a B.A. minor in Japanese Language and Culture and speak Japanese at a professional working level.</p>
+  </section>
+
+  <section id="research">
+    <h2>Research</h2>
+    <div class="thread">
+      <h3>Cannabis exposure across neurodevelopment and psychosis risk</h3>
+      <p>Establishing the neurodevelopmental pathways linking cannabis exposure during sensitive windows to psychosis, including among the first evidence tying prenatal exposure to a specific neural mechanism of psychotic-like experiences in youth, a comprehensive mechanistic review, and a clinically translated harm reduction framework for adolescents at high risk.</p>
+    </div>
+    <div class="thread">
+      <h3>Predictive modeling of psychiatric outcomes</h3>
+      <p>Building machine learning pipelines that integrate neuroimaging, clinical, and environmental data to predict which youth are at greatest risk for hazardous substance use, psychosis-spectrum symptoms, and their co-occurrence, and applying entropy measures to characterize neural complexity in early psychosis.</p>
+    </div>
+    <div class="thread">
+      <h3>Sex differences in neuroimmune function and psychiatric risk</h3>
+      <p>Identifying sex-differentiated inflammatory profiles in carriers of 22q11.2 copy number variants, and characterizing substance use in youth at genetic and clinical high risk for psychosis — the first exploration of substance use risk factors in 22q11.2 deletion syndrome.</p>
+    </div>
+    <div class="thread">
+      <h3>Pain, expectation, and reliability in human research</h3>
+      <p>First evidence that female participants are more reliable than males on all pain sensitivity measures, refuting assumptions historically used to exclude women from pain research; studies of how provider appearance and social perception shape pain and treatment expectations.</p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="entry">
+      <h3>Postdoctoral Research Fellow, Harvard Medical School | Boston Children's Hospital</h3>
+      <p class="when">2026–present · Boston, MA</p>
+      <p>NIH Kirschstein-NRSA T32 Fellow in Neurodevelopment. Integrating HBCD and ABCD Study data to characterize how early-life substance exposure shapes neurodevelopment and psychiatric risk, with a focus on female-specific windows of vulnerability.</p>
+    </div>
+    <div class="entry">
+      <h3>PhD in Neuroscience, University of California, Los Angeles</h3>
+      <p class="when">2020–2026 · Laboratory of Dr. Carrie Bearden · NIH F31 Fellow</p>
+      <p>Developed gradient-boosted and deep learning models predicting substance use and psychosis outcomes from multimodal data in 11,000+ adolescents; characterized neural, behavioral, and inflammatory markers of risk using resting-state and task fMRI, structural imaging, and tools such as Neuromaps. Led a team of five trainees and built shared analysis pipelines. Six first-author papers spanning empirical work and review.</p>
+    </div>
+    <div class="entry">
+      <h3>Postbaccalaureate IRTA Research Fellow, National Institutes of Health</h3>
+      <p class="when">2018–2020 · Section on Affective Neuroscience and Pain (NIMH/NIDA/NCCIH) · Laboratory of Dr. Lauren Atlas</p>
+      <p>Conducted imaging and behavioral testing for two fMRI studies on the neural correlates of pain perception, expectation, and substance use; designed and programmed five sub-studies on cognition and expectancy in Matlab; built machine learning models predicting individual pain responses from behavioral and physiological factors.</p>
+    </div>
+    <div class="entry">
+      <h3>Undergraduate Researcher, Boston University</h3>
+      <p class="when">2016–2018 · Visual Cognitive Neuroscience Laboratory; Child Experience &amp; Cortisol Laboratory</p>
+      <p>Completed an honors thesis on oscillatory dynamics in feedback-based learning using EEG and transcranial direct current stimulation; initiated a sub-study linking childhood maltreatment and eating disorder risk that led to a co-authored publication. B.A. in Psychology, minor in Japanese Language and Culture, summa cum laude, Phi Beta Kappa.</p>
+    </div>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+    <p class="note" style="margin-bottom:1.5rem;">First-author and selected co-authored publications. Full record on <a href="https://scholar.google.com/citations?user=zGjCoV8AAAAJ">Google Scholar</a> and <a href="https://orcid.org/0000-0001-9078-8564">ORCID</a>.</p>
+
+    <div class="pubyear">
+      <h3>Preprints &amp; under review</h3>
+      <p class="pub"><strong>Amir C</strong>, Walsh C, Wang H, Ghahremani D, Chang S, Ho T, Uddin L, Cooper Z, Rissman J, Bearden C. Predicting and characterizing substance use and psychosis outcomes in adolescence using neuroimaging, clinical, and demographic factors. <em>Under review, npj Mental Health.</em> <a href="https://doi.org/10.64898/2026.05.20.26353709">preprint</a></p>
+      <p class="pub"><strong>Amir C</strong>, Cooper ZD, Bearden CE. Mechanisms underlying the link between early cannabis exposure and psychosis. <em>Under review, Trends in Neurosciences.</em></p>
+      <p class="pub"><strong>Amir C</strong>, Wang H, Karlsgodt K, Bearden C, Luppi A. Uncovering neural complexity in early psychosis: insights from entropy measures. <em>In preparation.</em></p>
+    </div>
+
+    <div class="pubyear">
+      <h3>2026</h3>
+      <p class="pub">Fung H, O'Hora KP, Boen R, Wang HR, <strong>Amir C</strong>, Schleifer CH, et al., Bearden CE. Convergent and divergent cerebellar alterations in 22q11.2 copy number variants. <em>Biological Psychiatry Global Open Science.</em> <a href="https://scholar.google.com/scholar?q=%22Convergent+and+divergent+cerebellar+alterations+in+22q11%22">find paper</a></p>
+      <p class="pub">Mummaneni A, <strong>Amir C</strong>, Allen NB, Ho TC. Connectome-based predictive models optimized for sleep differentiate patients with depression from psychiatrically healthy controls. <em>Biological Psychiatry: Cognitive Neuroscience and Neuroimaging.</em> <a href="https://doi.org/10.1016/j.bpsc.2025.10.002">doi</a></p>
+    </div>
+
+    <div class="pubyear">
+      <h3>2025</h3>
+      <p class="pub"><strong>Amir C</strong>, Ghahremani DG, Chang SE, Cooper ZD, Bearden CE. Altered neurobehavioral reward response predicts psychotic-like experiences in youth exposed to cannabis prenatally. <em>Biological Psychiatry.</em> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12915486/">full text</a></p>
+      <p class="pub">Necka EA, Akintola T, Yu Q, <strong>Amir C</strong>, Oretsky O, Atlas LY. Isolating brain mechanisms of expectancy effects on pain: cue-based stimulus expectancies versus placebo-based treatment expectancies. <em>The Journal of Neuroscience.</em> <a href="https://scholar.google.com/scholar?q=%22Isolating+brain+mechanisms+of+expectancy+effects+on+pain%22">find paper</a></p>
+      <p class="pub">Schleifer C, Chang S, <strong>Amir C</strong>, O'Hora K, Fung H, et al., Bearden CE. Unique functional neuroimaging signatures of genetic versus clinical high risk for psychosis. <em>Biological Psychiatry.</em> <a href="https://doi.org/10.1016/j.biopsych.2024.08.010">doi</a></p>
+    </div>
+
+    <div class="pubyear">
+      <h3>2024</h3>
+      <p class="pub"><strong>Amir C</strong>, O'Hora K, Chiem E, Schleifer C, Grigoryan V, Kushan-Wells L, Chiang J, Cole S, Irwin M, Bearden CE. Differential inflammatory profiles in carriers of reciprocal 22q11.2 copy number variants. <em>Psychoneuroendocrinology.</em> <a href="https://doi.org/10.1016/j.psyneuen.2024.107135">doi</a></p>
+      <p class="pub">Kennedy L, Addington J, <strong>Amir C</strong>, Bearden CE, Cannon TD, et al., Cadenhead KS. Occasional cannabis use is associated with higher premorbid functioning and IQ in youth at clinical high-risk for psychosis: parallel findings to psychosis cohorts. <em>Schizophrenia Research.</em> <a href="https://scholar.google.com/scholar?q=%22Occasional+cannabis+use+is+associated+with+higher+premorbid+functioning%22">find paper</a></p>
+    </div>
+
+    <div class="pubyear">
+      <h3>2023</h3>
+      <p class="pub"><strong>Amir CM</strong>, Kapler S, Hoftman GD, Kushan L, Zinberg J, et al., Bearden CE. Neurobehavioral risk factors influence prevalence and severity of hazardous substance use in youth at genetic and clinical high risk for psychosis. <em>Frontiers in Psychiatry.</em> <a href="https://doi.org/10.3389/fpsyt.2023.1143315">doi</a></p>
+      <p class="pub">Kapler S, Avery L, Hoftman G, <strong>Amir C</strong>, Kushan L, Cooper Z, Bearden CE. Assessing evidence supporting cannabis harm reduction practices for adolescents at clinical high risk for psychosis: a review and clinical implementation tool. <em>Psychological Medicine.</em> <a href="https://scholar.google.com/scholar?q=%22cannabis+harm+reduction+practices+for+adolescents+at+clinical+high+risk%22">find paper</a></p>
+      <p class="pub">Dildine T, <strong>Amir C</strong>, Parsons J, Atlas LY. How pain-related facial expressions are evaluated in relation to gender, race, and emotion. <em>Affective Science.</em> <a href="https://doi.org/10.1007/s42761-023-00181-6">doi</a></p>
+    </div>
+
+    <div class="pubyear">
+      <h3>2020–2022</h3>
+      <p class="pub"><strong>Amir C</strong>, Rose-McCandlish M, Weger R, Dildine T, Mischkowski D, Necka E, Lee I, Wager T, Pine D, Atlas L. Test-retest reliability of an adaptive thermal pain calibration procedure in healthy volunteers. <em>The Journal of Pain</em> (2022). <a href="https://doi.org/10.1016/j.jpain.2022.01.011">doi</a></p>
+      <p class="pub">Necka EA, <strong>Amir C</strong>, Dildine T, Atlas LY. Expectations about pain and analgesic treatment are shaped by medical providers' facial appearances. <em>Social Science &amp; Medicine</em> (2021). <a href="https://doi.org/10.1016/j.socscimed.2021.114091">doi</a></p>
+      <p class="pub">Mercurio AE, Hong F, <strong>Amir C</strong>, Tarullo A, Samkavitz A, Ashy M, Malley-Morrison K. Relationships among childhood maltreatment, limbic system dysfunction, and eating disorders in college women. <em>Journal of Interpersonal Violence</em> (2020). <a href="https://scholar.google.com/scholar?q=%22childhood+maltreatment%2C+limbic+system+dysfunction%2C+and+eating+disorders+in+college+women%22">find paper</a></p>
+    </div>
+  </section>
+
+  <section id="talks">
+    <h2>Invited talks &amp; oral presentations</h2>
+    <p class="talk"><strong>NIDA Cannabis Science Interest Group</strong>, Washington, DC (2026). Cannabis exposure and psychosis risk across development. Invited talk.</p>
+    <p class="talk"><strong>Society of Biological Psychiatry</strong> (2026). Cannabis and mental health across development: a translational perspective. Symposium chair.</p>
+    <p class="talk"><strong>Yale University</strong> (2026). Drug exposures and psychosis risk across development. Invited talk.</p>
+    <p class="talk"><strong>Harvard Medical School</strong> (2026). Drug exposures and psychosis risk across development. Invited talk.</p>
+    <p class="talk"><strong>McLean Hospital</strong> (2026). Drug exposures and psychosis risk across development. Invited talk.</p>
+    <p class="talk"><strong>MGH Center for Addiction Medicine Grand Rounds</strong> (2025). Drug exposures and psychosis risk across development.</p>
+    <p class="talk"><strong>Society of Biological Psychiatry Pre-conference Meeting</strong>, University of Toronto (2025). The link between substance exposure and psychosis across development.</p>
+    <p class="talk"><strong>College on Problems of Drug Dependence</strong> (2025). Predicting and characterizing substance use and psychosis outcomes in adolescence.</p>
+    <p class="talk"><strong>ABCD All-Site Meeting</strong>, UCLA (2025). The link between substance exposure and psychosis across development.</p>
+    <p class="talk"><strong>American Academy of Child and Adolescent Psychiatry</strong> (2024). Prosocial behavior moderates the relationship between psychotic-like experiences and elevated substance use in the ABCD Study.</p>
+    <p class="talk"><strong>USC Institute for Addiction Science</strong> (2024). Altered neurobehavioral reward response predicts psychotic-like experiences in youth exposed to cannabis prenatally.</p>
+    <p class="talk"><strong>UCLA Center for Cannabis and Cannabinoids</strong> (2024). The role of prenatal cannabis exposure in reward-related neural circuitry and psychotic-like experiences in youth.</p>
+  </section>
+
+  <section id="funding">
+    <h2>Funding &amp; honors</h2>
+    <div class="cols">
+      <div>
+        <h3>Funding</h3>
+        <p class="award"><strong>NIH Kirschstein-NRSA T32 Postdoctoral Fellowship</strong> in Neurodevelopment ($168,000) <span class="when">2026–present</span></p>
+        <p class="award"><strong>NIH Kirschstein-NRSA F31 Predoctoral Fellowship</strong>, National Institute on Drug Abuse ($259,296) <span class="when">2022–2026</span></p>
+        <p class="award"><strong>NIH Postbaccalaureate Intramural Research Training Award</strong> ($104,000) <span class="when">2018–2020</span></p>
+        <p class="award"><strong>Society for Science STEM Action Grant</strong> ($5,000) <span class="when">2024</span></p>
+        <p class="award"><strong>NSPN LUV Grant</strong> ($2,500) <span class="when">2023</span></p>
+        <p class="award"><strong>Undergraduate Research Opportunities Awards</strong>, three competitive awards, Boston University ($14,250) <span class="when">2016–2018</span></p>
+      </div>
+      <div>
+        <h3>Honors &amp; awards</h3>
+        <p class="award"><strong>Eva Kavan Prize for Excellence in Research on the Brain</strong>, UCLA <span class="when">2026</span></p>
+        <p class="award"><strong>Travel Award</strong>, American College of Neuropsychopharmacology <span class="when">2026</span></p>
+        <p class="award"><strong>Addiction NeuroBurst Travel Award</strong>, College on Problems of Drug Dependence <span class="when">2025</span></p>
+        <p class="award"><strong>Schleifer Professional Development Travel Award</strong>, Society of Biological Psychiatry <span class="when">2025</span></p>
+        <p class="award"><strong>Fellowship</strong>, Organization for Human Brain Mapping <span class="when">2022–2023</span></p>
+        <p class="award"><strong>Trainee Professional Development Award</strong>, Society for Neuroscience <span class="when">2021</span></p>
+        <p class="award"><strong>Diversity, Inclusion, and Outreach Award</strong>, NIH NCCIH <span class="when">2021</span></p>
+        <p class="award"><strong>Building Bridges Award</strong>, NIH NIDCR <span class="when">2019</span></p>
+        <p class="award"><strong>College of Arts and Sciences College Award</strong>, Boston University <span class="when">2018</span></p>
+        <p class="award"><strong>Phi Beta Kappa</strong>; B.A. summa cum laude with Honors in Psychology <span class="when">2018</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="teaching">
+    <h2>Teaching &amp; mentorship</h2>
+    <ul class="plain">
+      <li>
+        <h3>Lecturer &amp; teaching assistant, UCLA Psychiatry 178 (2025–2026)</h3>
+        <p>Co-designed and delivered "Cannabis and Cannabinoids: From Neuropharmacology to Public Policy," an undergraduate and graduate course bridging neuroscience, psychiatry, and policy — co-developing lectures, assignments, and assessments.</p>
+      </li>
+      <li>
+        <h3>Invited lecturer, UCLA Cannabis and Cannabinoids Grand Rounds (2023–2024)</h3>
+        <p>Developed and taught modules on prenatal cannabis exposure.</p>
+      </li>
+      <li>
+        <h3>Research mentorship (2021–2024)</h3>
+        <p>Supervised and mentored four undergraduate researchers and one post-graduate student at UCLA, guiding experimental execution, data analysis, and professional development.</p>
+      </li>
+      <li>
+        <h3>Instructor &amp; curriculum developer, Beyond Your Perception Critical Media Collective (2017)</h3>
+        <p>Co-designed and taught a critical media literacy course for 5th and 7th graders in Dorchester, MA.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="service">
+    <h2>Service &amp; leadership</h2>
+    <ul class="plain">
+      <li>
+        <h3>Ad hoc reviewer</h3>
+        <p><em>Journal of Neuroscience · American Journal of Psychiatry · Psychological Medicine · Addiction · Schizophrenia Research · Journal of Pain</em></p>
+      </li>
+      <li>
+        <h3>Co-founder &amp; VP of External Affairs, CELL Scholars (2020–2023)</h3>
+        <p>Cultivating Early Laboratory Learning: expanding access to hands-on research training for early-career scientists.</p>
+      </li>
+      <li>
+        <h3>Co-founder, NIH NCCIH IDEA Organization (2020)</h3>
+        <p>Inclusion, Diversity and Equity Advocacy group at the National Institutes of Health.</p>
+      </li>
+      <li>
+        <h3>President, Boston University Undergraduate Psychology Association (2017–2018)</h3>
+      </li>
+      <li>
+        <h3>Yawkey Foundation Fellow, Veterans Legal Services (2016–2017)</h3>
+        <p>Assisted in casework for at-risk and low-income veterans; received mental health advocacy training from the Cambridge Multi-Service Center.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="beyond">
+    <h2>Writing &amp; outreach</h2>
+    <ul class="plain">
+      <li>
+        <h3>Chief Executive Officer, <a href="https://knowingneurons.com">Knowing Neurons</a> (2021–2024)</h3>
+        <p>Led a 501(c)(3) neuroscience journalism and science communication nonprofit, growing revenue by over 1900% through grants and sponsorships and expanding global readership through a website translation program. As Contributing Editor (2021–2024), published multiple science communication pieces, including the site's #2 all-time most-read article, "How Weightlifting Gets the Brain in Shape."</p>
+      </li>
+      <li>
+        <h3>In the media</h3>
+        <p>My doctoral research on prenatal cannabis exposure was featured in <a href="https://www.scientificamerican.com/article/the-link-between-cannabis-and-psychosis-in-teens-is-real/">Scientific American</a>.</p>
+      </li>
+      <li>
+        <h3>Selected writing recognition</h3>
+        <p>Winner of Sigma Xi's 2022 STEM policy paper competition for "To Strengthen the American Workforce, Empower Workers." Undergraduate literary piece on pain structures in Tanizaki's writings selected as the leading article for the inaugural issue of <em>The Alexandria</em> (2018).</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="cv">
+    <h2>CV &amp; contact</h2>
+    <div class="cvrow">
+      <a class="btn" href="Amir_CV.pdf">Download CV (PDF)</a>
+      <p class="note">Or reach me at <a href="mailto:carolyn.amir@childrens.harvard.edu">carolyn.amir@childrens.harvard.edu</a>.</p>
+    </div>
+    <object class="cvembed" data="Amir_CV.pdf" type="application/pdf" aria-label="Embedded CV PDF">
+      <p class="note">Your browser can't display the embedded PDF — use the download button above.</p>
+    </object>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Carolyn M. Amir · Postdoctoral Fellow, Harvard Medical School &amp; Boston Children's Hospital</p>
+</footer>
+
+</body>
+</html>
